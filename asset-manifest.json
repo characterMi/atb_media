@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/atb_media/static/css/main.729d6346.css",
+    "main.js": "/atb_media/static/js/main.59e7deee.js",
+    "static/media/logo.png": "/atb_media/static/media/logo.cd6b60c18b342209faa8.png",
+    "index.html": "/atb_media/index.html",
+    "main.729d6346.css.map": "/atb_media/static/css/main.729d6346.css.map",
+    "main.59e7deee.js.map": "/atb_media/static/js/main.59e7deee.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.729d6346.css",
+    "static/js/main.59e7deee.js"
+  ]
+}
