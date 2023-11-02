@@ -1,0 +1,75 @@
+.skeleton {
+    background-color: rgb(199, 199, 199);
+    margin: 0.75rem 0;
+}
+
+.skeleton.video {
+    height: 200px;
+    width: 100%;
+    margin-top: 0;
+}
+
+.skeleton.single-video {
+    width: 100%;
+    aspect-ratio: 16/9;
+}
+
+.skeleton.title {
+    height: 1rem;
+    border-radius: 0.75rem;
+}
+
+.skeleton.text {
+    height: 0.75rem;
+    border-radius: 0.75rem;
+}
+
+.skeleton.mt {
+    margin: 25px 15px 0;
+}
+
+.skeleton.ml {
+    margin: 10px 15px 10px;
+}
+
+.skeleton.ma {
+    margin: 25px auto;
+}
+
+.skeleton.w-small {
+    width: 150px;
+}
+
+.skeleton.mn {
+    margin: 0 auto;
+}
+
+.skeleton.w-xs {
+    width: 100px;
+}
+
+.skeleton.width-100 {
+    width: 90%;
+}
+
+
+.skeleton.width-50 {
+    width: 50%;
+}
+
+.skeleton.profile-circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin-top: -90px;
+}
+
+@keyframes pulse {
+    50% {
+        opacity: 0.35;
+    }
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
