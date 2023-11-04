@@ -18,18 +18,7 @@ a {
 }
 
 ::-webkit-scrollbar {
-  width: 0px;
-  height: 5px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: rgb(114, 113, 113);
-  border-radius: 10px;
-  height: 200px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: transparent;
+  display: none;
 }
 
 .category-btn:hover {
@@ -97,13 +86,13 @@ a {
 
 @media screen and (min-width: 1250px) {
   .react-player {
-    height: 600px !important;
+    height: 550px !important;
   }
 }
 
 @media screen and (min-width: 1100px) and (max-width: 1250px) {
   .react-player {
-    height: 500px !important;
+    height: 450px !important;
   }
 }
 
@@ -127,7 +116,7 @@ a {
 
 @media screen and (min-width: 630px) and (max-width: 900px) {
   .react-player {
-    height: 500px !important;
+    height: 400px !important;
   }
 }
 
@@ -167,4 +156,16 @@ a {
   .react-player {
     height: 250px !important;
   }
+}
+
+.MuiInputLabel-root {
+  color: #fff !important;
+}
+
+.MuiInputLabel-root {
+  color: #d32f2f !important;
+}
+
+.MuiInput-root {
+  color: #FFF !important;
 }

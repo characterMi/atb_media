@@ -24,6 +24,12 @@
     border-radius: 0.75rem;
 }
 
+.skeleton.comment {
+    height: 8rem;
+    border-radius: 0.75rem;
+    margin: 25px 15px;
+}
+
 .skeleton.mt {
     margin: 25px 15px 0;
 }
