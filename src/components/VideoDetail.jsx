@@ -62,36 +62,41 @@ const VideoDetail = () => {
               </Button>
             </Link>
           </Stack>
-          <Box
-            p={2}
-            my={1}
-            mx={2}
-            alignItems="start"
-            flexDirection="column"
-            sx={{
-              borderRadius: "15px",
-              background: "#1e1e1e",
-              cursor: "pointer",
-              display: { xs: "flex", md: "none" }
-            }}
-            onClick={() => setCommentSection(true)}
-          >
-            <Typography variant="h6" display="flex" justifyContent="flex-end" alignItems="center">
-              Comments <span style={{ opacity: 0.7, marginLeft: "5px" }}>{comments.length}</span>
-            </Typography>
-            <Box display="flex" justifyContent="start" alignItems="center" mt={1}>
-              <img
-                src={comments[0]?.snippet.topLevelComment.snippet.authorProfileImageUrl}
-                alt={comments[0]?.snippet.topLevelComment.snippet.authorDisplayName}
-                style={{ width: "28px", height: "28px", borderRadius: "50%" }}
-                loading="lazy"
-              />
-              <Typography variant="body2" ml={1}>
-                {`${comments[0]?.snippet.topLevelComment.snippet.textDisplay.slice(0, 50)}...`}
-              </Typography>
-            </Box>
-          </Box>
-          <CommentSection commentSection={commentSection} setCommentSection={setCommentSection} comments={comments} id={id} />
+          {comments?.length && (
+            <>
+
+              <Box
+                p={2}
+                my={1}
+                mx={2}
+                alignItems="start"
+                flexDirection="column"
+                sx={{
+                  borderRadius: "15px",
+                  background: "#1e1e1e",
+                  cursor: "pointer",
+                  display: { xs: "flex", md: "none" }
+                }}
+                onClick={() => setCommentSection(true)}
+              >
+                <Typography variant="h6" display="flex" justifyContent="flex-end" alignItems="center">
+                  Comments <span style={{ opacity: 0.7, marginLeft: "5px" }}>{comments.length}</span>
+                </Typography>
+                <Box display="flex" justifyContent="start" alignItems="center" mt={1}>
+                  <img
+                    src={comments[0]?.snippet.topLevelComment.snippet.authorProfileImageUrl}
+                    alt={comments[0]?.snippet.topLevelComment.snippet.authorDisplayName}
+                    style={{ width: "28px", height: "28px", borderRadius: "50%" }}
+                    loading="lazy"
+                  />
+                  <Typography variant="body2" ml={1}>
+                    {`${comments[0]?.snippet.topLevelComment.snippet.textDisplay.slice(0, 50)}...`}
+                  </Typography>
+                </Box>
+              </Box>
+              <CommentSection commentSection={commentSection} setCommentSection={setCommentSection} comments={comments} id={id} />
+            </>
+          )}
         </Box>
       </Box>
     )

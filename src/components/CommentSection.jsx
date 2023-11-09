@@ -46,7 +46,7 @@ const CommentSection = ({ comments, id, setCommentSection, commentSection }) => 
               </Button>
             </Link>
           </Box>
-          {comments.map((comment, index) => (
+          {comments?.length && comments.map((comment, index) => (
             <Box sx={{ borderBottom: index === comments.length - 1 ? "none" : "1px solid gray", width: '100%' }} display="flex" justifyContent="start" key={index} alignItems="start" py={2}>
               <Box
                 component="img"
