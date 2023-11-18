@@ -17,7 +17,9 @@ const CommentSection = ({ comments, id, setCommentSection, commentSection }) => 
           top: commentSection ? 0 : '100%',
           position: { xs: "absolute", md: "unset" },
           px: { xs: 1, sm: 3 },
-          py: { xs: 2, sm: 3 }
+          py: { xs: 2, sm: 3 },
+          width: { xs: 'calc(100% - 1rem)', sm: 'calc(100% - 3rem)', md: 'auto' },
+          zIndex: { xs: commentSection ? '1' : '-1', md: '1' },
         }}
       >
         <Box display="flex" justifyContent="space-between">
@@ -34,7 +36,8 @@ const CommentSection = ({ comments, id, setCommentSection, commentSection }) => 
         </Box>
         <Box
           sx={{
-            borderTop: "1px solid #fff"
+            borderTop: "1px solid #fff",
+            overflow: 'hidden'
           }}
           mt={2}
         >
