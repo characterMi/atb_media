@@ -5,7 +5,7 @@ import { demoVideoUrl, demoVideoTitle, demoChannelUrl, demoChannelTitle } from "
 
 const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
   return (
-    <Card onClick={() => window.scrollTo({top: 0, behavior: "smooth"})} sx={{ width: { xs: 'calc(100vw - 50px)', sm: '300px' }, boxShadow: "none", borderRadius: "0" }}>
+    <Card onClick={() => window.scrollTo({top: 0, behavior: "smooth"})} sx={{ width: { xs: 'calc(100vw - 50px)', sm: '300px' }, boxShadow: "none", borderRadius: "0", mt: "15px", ml: "15px" }}>
       <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
         <CardMedia
           alt={snippet?.title}

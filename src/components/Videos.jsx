@@ -9,7 +9,7 @@ const Videos = ({ videos, direction, loading_direction }) => {
     } else if (videos?.length <= 0) {
         content = <SkeletonVideos direction={loading_direction ? "column" : "row"} />
     } else if (videos?.length > 0) {
-        content = (<Stack flexDirection={{ xs: "row", md: direction || "row" }} flexWrap="wrap" justifyContent="center" alignItems="center" gap={2}>
+        content = (<Stack flexDirection={{ xs: "row", md: direction || "row" }} flexWrap="wrap" justifyContent="center" alignItems="center">
             {videos.map((item, index) => (
                 <Box key={index}>
                     {item.id.videoId && <VideoCard video={item} />}
