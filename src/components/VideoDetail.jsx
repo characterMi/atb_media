@@ -62,7 +62,7 @@ const VideoDetail = () => {
               </Button>
             </Link>
           </Stack>
-          {comments?.length && (
+          {comments?.length > 0 && (
             <>
 
               <Box

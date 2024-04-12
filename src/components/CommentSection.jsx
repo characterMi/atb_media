@@ -62,9 +62,7 @@ const CommentSection = ({ comments, id, setCommentSection, commentSection }) => 
                 <Typography sx={{ fontSize: { xs: "16px", md: "18px", lg: "20px" } }}>
                   {comment.snippet.topLevelComment.snippet.authorDisplayName}
                 </Typography>
-                <Typography sx={{ fontSize: { xs: "12px", md: "14px", lg: "16px" } }}>
-                  {comment.snippet.topLevelComment.snippet.textDisplay}
-                </Typography>
+                <Typography dangerouslySetInnerHTML={{ __html: comment.snippet.topLevelComment.snippet.textDisplay }} sx={{ fontSize: { xs: "12px", md: "14px", lg: "16px" } }} />
               </Box>
             </Box>
           ))}
