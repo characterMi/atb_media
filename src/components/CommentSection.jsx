@@ -20,6 +20,11 @@ const CommentSection = ({ comments, id, setCommentSection, commentSection }) => 
           py: { xs: 2, sm: 3 },
           width: { xs: 'calc(100% - 1rem)', sm: 'calc(100% - 3rem)', md: 'auto' },
           zIndex: { xs: commentSection ? '1' : '-1', md: '1' },
+          height: {
+            xs: commentSection ? "auto" : "100vh",
+            md: "auto"
+          },
+          overflow: "hidden"
         }}
       >
         <Box display="flex" justifyContent="space-between">
@@ -41,8 +46,8 @@ const CommentSection = ({ comments, id, setCommentSection, commentSection }) => 
           }}
           mt={2}
         >
-          <Box py={2} sx={{ borderBottom: "1px solid gray", flexDirection: { xs: "column", sm: "row" } }} display="flex" justifyContent="space-between">
-            <TextField sx={{ width: { xs: "100%", sm: "80%" } }} label="Add a comment..." color="error" variant="standard" />
+          <Box py={2} sx={{ borderBottom: "1px solid gray", gap: "12px" }} display="flex" justifyContent="space-between">
+            <TextField sx={{ flex: 1 }} label="Add a comment..." color="error" variant="standard" />
             <Link target="_blank" to={`https://www.youtube.com/watch?v=${id}`} style={{ color: "#fff" }}>
               <Button color="error" variant="contained" sx={{ mt: { xs: 2, sm: 0 } }}>
                 Comment

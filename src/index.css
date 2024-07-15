@@ -14,8 +14,9 @@ body {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 * {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -webkit-tap-highlight-color: transparent;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .app {
@@ -29,7 +30,7 @@ a {
 }
 
 .category-btn:hover {
-  background-color: #FC1503 !important;
+  background-color: #fc1503 !important;
   color: white !important;
 }
 
@@ -115,7 +116,7 @@ a {
   }
 }
 
-@media screen and (max-width:800px) {
+@media screen and (max-width: 800px) {
   .copyright {
     display: none !important;
   }
@@ -174,5 +175,5 @@ a {
 }
 
 .MuiInput-root {
-  color: #FFF !important;
+  color: #fff !important;
 }

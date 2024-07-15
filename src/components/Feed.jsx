@@ -1,18 +1,24 @@
-import { useEffect, useState } from 'react'
-import { Box, Stack, Typography } from '@mui/material'
-import { Sidebar, Videos } from './'
+import { Box, Stack, Typography } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { fetchFromAPI } from "../utils/fetchAPI";
+import { Sidebar, Videos } from './';
 
 const Feed = () => {
-
   const [selectedCategory, setSelectedCategory] = useState('New')
-
   const [videos, setVideos] = useState([])
+  const [searchParams] = useSearchParams();
+  const category = searchParams.get("category");
+
+  useEffect(() => {
+    if (category) setSelectedCategory(category);
+  }, [category])
+
 
   useEffect(() => {
     setVideos([])
     fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
-      .then((data) => setVideos(data.items))
+      .then((data) => setVideos(data?.items))
       .catch(() => setVideos(null))
   }, [selectedCategory])
 
