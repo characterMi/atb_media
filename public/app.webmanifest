@@ -1,0 +1,39 @@
+{
+  "id": "/atb_media/",
+  "name": "ATB Media",
+  "short_name": "ATB Media",
+  "description": "A YouTube clone created using the YouTube api. With the ability to search for videos and playing it straight from the app.",
+  "start_url": ".",
+  "orientation": "portrait",
+  "theme_color": "#000000",
+  "scope": ".",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/atb_media/images/atb-media_192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/atb_media/images/atb-media_512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "background_color": "#000000",
+  "screenshots": [
+    {
+      "src": "/atb_media/images/atb-media_first.png",
+      "sizes": "1024x768",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/atb_media/images/atb-media_responsive.png",
+      "sizes": "339x747",
+      "type": "image/png"
+    }
+  ]
+}
