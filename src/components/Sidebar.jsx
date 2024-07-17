@@ -1,6 +1,7 @@
 import { Stack } from "@mui/material";
 import { useSearchParams } from "react-router-dom";
 import { categories } from "../utils/constants";
+import DownloadAppButton from "./DownloadBtn";
 
 const Sidebar = ({ selectedCategory, setSelectedCategory }) => {
     const [_, setSearchParams] = useSearchParams();
@@ -27,13 +28,19 @@ const Sidebar = ({ selectedCategory, setSelectedCategory }) => {
                     onClick={() => handleClick(category)}
                     style={{
                         background: category.name === selectedCategory && "#fc1503",
-                        color: "#fff"
+                        color: "#fff",
                     }}
                 >
                     <span style={{ color: category.name === selectedCategory ? 'white' : "red" }}>{category.icon}</span>
                     <span style={{ opacity: category.name === selectedCategory ? '1' : '0.8' }}>{category.name}</span>
                 </button>
             ))}
+
+            <div className="download-btn">
+                <hr />
+
+                <DownloadAppButton />
+            </div>
         </Stack>
     )
 }

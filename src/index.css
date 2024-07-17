@@ -92,6 +92,18 @@ a {
   align-items: center;
 }
 
+.MuiInputLabel-root {
+  color: #fff !important;
+}
+
+.MuiInputLabel-root {
+  color: #d32f2f !important;
+}
+
+.MuiInput-root {
+  color: #fff !important;
+}
+
 @media screen and (min-width: 1250px) {
   .react-player {
     height: 550px !important;
@@ -166,14 +178,8 @@ a {
   }
 }
 
-.MuiInputLabel-root {
-  color: #fff !important;
-}
-
-.MuiInputLabel-root {
-  color: #d32f2f !important;
-}
-
-.MuiInput-root {
-  color: #fff !important;
+@media (display-mode: standalone) {
+  .download-btn {
+    display: none;
+  }
 }

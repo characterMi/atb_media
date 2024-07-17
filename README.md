@@ -39,4 +39,7 @@
     <li>
         <img src="https://github.com/characterMi/characterMi/raw/main/images/technologies/icons8-material-ui.svg" width="46" height="46" alt="MUI" />
     </li>
+    <li>
+        <img src="https://github.com/characterMi/characterMi/raw/main/images/technologies/pwa.png" width="60" height="24" alt="PWA" />
+    </li>
 </ul>
