@@ -1,9 +1,10 @@
 const assets = [
   "/atb_media",
-  "/atb_media/static/css/main.90beee83.css",
-  "/atb_media/static/js/main.2cd8f76b.js",
-  "/atb_media/static/css/main.90beee83.css.map",
-  "/atb_media/static/js/main.2cd8f76b.js.map",
+  "/atb_media/static/css/main.0e20e276.css",
+  "/atb_media/static/js/main.faf39502.js",
+  "/atb_media/static/media/logo.cd6b60c18b342209faa8.png",
+  "/atb_media/static/css/main.0e20e276.css.map",
+  "/atb_media/static/js/main.faf39502.js.map",
 ];
 
 self.addEventListener("install", (event) => {
