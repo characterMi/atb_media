@@ -34,7 +34,7 @@ const DownloadAppButton = () => {
             onClick={handleDownload}
             style={{
                 color: "#fff",
-                marginBlock: "1rem"
+                whiteSpace: "nowrap",
             }}
         >
             <span style={{ color: "red" }}><Download /></span>

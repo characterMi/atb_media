@@ -94,9 +94,17 @@ const VideoDetail = () => {
                       style={{ width: "28px", height: "28px", borderRadius: "50%" }}
                       loading="lazy"
                     />
-                    <Typography variant="body2" ml={1}>
-                      {`${comments[0]?.snippet.topLevelComment.snippet.textDisplay.slice(0, 50)}...`}
-                    </Typography>
+                    <Typography
+                      variant="body2"
+                      ml={1}
+                      className="line-clamp"
+                      sx={{
+                        "& a": { color: "lightblue !important" }
+                      }}
+                      dangerouslySetInnerHTML={{
+                        __html: comments?.[0]?.snippet.topLevelComment.snippet.textDisplay
+                      }}
+                    />
                   </Box>
                 </Box>
                 <CommentSection commentSection={commentSection} setCommentSection={setCommentSection} comments={comments} id={id} />

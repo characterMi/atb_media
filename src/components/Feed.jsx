@@ -11,7 +11,9 @@ const Feed = () => {
   const category = searchParams.get("category");
 
   useEffect(() => {
-    if (category) setSelectedCategory(category);
+    if (category) return setSelectedCategory(category);
+
+    setSelectedCategory("New")
   }, [category])
 
 

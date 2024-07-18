@@ -37,8 +37,6 @@ const Sidebar = ({ selectedCategory, setSelectedCategory }) => {
             ))}
 
             <div className="download-btn">
-                <hr />
-
                 <DownloadAppButton />
             </div>
         </Stack>

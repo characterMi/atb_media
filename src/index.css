@@ -46,6 +46,7 @@ a {
   border: none;
   outline: none;
   width: 350px;
+  background: white;
 }
 
 .category-btn {
@@ -72,6 +73,11 @@ a {
   margin-right: 15px;
 }
 
+.download-btn {
+  border-top: 1px solid #fff;
+  margin-block: 1rem;
+}
+
 .skeleton-videos {
   background-color: #1e1e1e;
   box-shadow: 2px 2px 5px 2px #4646464b;
@@ -92,6 +98,17 @@ a {
   align-items: center;
 }
 
+.line-clamp {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -moz-box;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
 .MuiInputLabel-root {
   color: #fff !important;
 }
@@ -104,43 +121,47 @@ a {
   color: #fff !important;
 }
 
-@media screen and (min-width: 1250px) {
+@media (min-width: 1250px) {
   .react-player {
     height: 550px !important;
   }
 }
 
-@media screen and (min-width: 1100px) and (max-width: 1250px) {
+@media (min-width: 1100px) and (max-width: 1250px) {
   .react-player {
     height: 450px !important;
   }
 }
 
-@media screen and (min-width: 1000px) and (max-width: 1100px) {
+@media (min-width: 1000px) and (max-width: 1100px) {
   .react-player {
     height: 400px !important;
   }
 }
 
-@media screen and (max-width: 900px) {
+@media (max-width: 900px) {
   .category-btn {
     margin: 10px;
   }
-}
 
-@media screen and (max-width: 800px) {
+  .download-btn {
+    border-top: none;
+    border-left: 1px solid white;
+    margin: 0;
+  }
+
   .copyright {
     display: none !important;
   }
 }
 
-@media screen and (min-width: 630px) and (max-width: 900px) {
+@media (min-width: 630px) and (max-width: 900px) {
   .react-player {
     height: 400px !important;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
   .scroll-horizontal {
     overflow: auto !important;
   }
@@ -172,7 +193,7 @@ a {
   }
 }
 
-@media screen and (max-width: 400px) {
+@media (max-width: 400px) {
   .react-player {
     height: 250px !important;
   }
