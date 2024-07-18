@@ -29,6 +29,11 @@
       "sizes": "1024x768",
       "type": "image/png",
       "form_factor": "wide"
+    },
+    {
+      "src": "/atb_media/images/atb-media_responsive.png",
+      "sizes": "380x827",
+      "type": "image/png"
     }
   ]
 }
