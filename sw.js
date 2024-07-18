@@ -1,5 +1,5 @@
 const assets = [
-  "/atb_media",
+  "/atb_media/",
   "/atb_media/static/css/main.0e20e276.css",
   "/atb_media/static/js/main.faf39502.js",
   "/atb_media/static/media/logo.cd6b60c18b342209faa8.png",
