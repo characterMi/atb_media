@@ -9,7 +9,7 @@ const assets = [
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open("assets").then((cache) => {
+    caches.open("atb-media").then((cache) => {
       cache.addAll(assets);
     })
   );
@@ -22,7 +22,7 @@ self.addEventListener("fetch", (event) => {
       // and update the cache for future usage
       const fetchPromise = fetch(event.request)
         .then((networkResponse) => {
-          return caches.open("assets").then((cache) => {
+          return caches.open("atb-media").then((cache) => {
             cache.put(event.request, networkResponse.clone());
             return networkResponse;
           });
