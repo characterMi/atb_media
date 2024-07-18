@@ -12,14 +12,24 @@
     {
       "src": "/atb_media/images/atb-media_192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
+      "type": "image/png"
     },
     {
       "src": "/atb_media/images/atb-media_512.png",
       "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/atb_media/images/atb-media_maskable-192.png",
+      "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "maskable"
+    },
+    {
+      "src": "/atb_media/images/atb-media_maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "background_color": "#000000",
@@ -32,7 +42,7 @@
     },
     {
       "src": "/atb_media/images/atb-media_responsive.png",
-      "sizes": "339x747",
+      "sizes": "380x827",
       "type": "image/png"
     }
   ]
