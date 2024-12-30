@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { Link, useParams } from 'react-router-dom';
 import { fetchFromAPI } from '../utils/fetchAPI';
-import { CommentSection, Videos } from "./";
+import CommentSection from "./CommentSection";
 import SkeletonVideo from './Skeleton/SkeletonVideo';
+import Videos from "./Videos";
 
 const VideoDetail = () => {
   const [comments, setComments] = useState([])

@@ -1,6 +1,8 @@
 import { Box, Stack } from "@mui/material";
-import { ChannelCard, Error, VideoCard } from "./";
+import ChannelCard from "./ChannelCard";
+import Error from "./Error";
 import SkeletonVideos from "./Skeleton/SkeletonVideos";
+import VideoCard from "./VideoCard";
 
 const Videos = ({ videos, direction, loading_direction }) => {
     let content;

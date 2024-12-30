@@ -1,7 +1,7 @@
-import { Stack } from "@mui/material"
-import { Link } from "react-router-dom"
+import { Stack } from "@mui/material";
+import { Link } from "react-router-dom";
 import Logo from "../images/logo.png";
-import { SearchBar } from "./"
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   return (

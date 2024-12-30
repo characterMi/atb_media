@@ -47,6 +47,7 @@ a {
   outline: none;
   width: 350px;
   background: white;
+  color: black;
 }
 
 .category-btn {
@@ -147,7 +148,8 @@ a {
   .download-btn {
     border-top: none;
     border-left: 1px solid white;
-    margin: 0;
+    margin: 0 0.5rem;
+    padding-inline: 0.5rem;
   }
 
   .copyright {

@@ -1,6 +1,12 @@
-import { HashRouter, Routes, Route } from "react-router-dom";
 import { Box } from "@mui/material";
-import { Navbar, Feed, VideoDetail, ChannelDetail, SearchFeed } from "./components"
+import { lazy } from "react";
+import { HashRouter, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar.jsx";
+
+const Feed = lazy(() => import("./components/Feed"));
+const VideoDetail = lazy(() => import("./components/VideoDetail"));
+const ChannelDetail = lazy(() => import("./components/ChannelDetail"));
+const SearchFeed = lazy(() => import("./components/SearchFeed"));
 
 function App() {
   return (

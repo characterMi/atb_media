@@ -2,7 +2,8 @@ import { Box, Stack, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { fetchFromAPI } from "../utils/fetchAPI";
-import { Sidebar, Videos } from './';
+import Sidebar from "./Sidebar";
+import Videos from "./Videos";
 
 const Feed = () => {
   const [selectedCategory, setSelectedCategory] = useState('New')
