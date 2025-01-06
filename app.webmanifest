@@ -35,15 +35,37 @@
   "background_color": "#000000",
   "screenshots": [
     {
-      "src": "/atb_media/images/atb-media_first.png",
-      "sizes": "1024x768",
+      "src": "/atb_media/images/d1.png",
+      "sizes": "1440x900",
       "type": "image/png",
       "form_factor": "wide"
     },
     {
-      "src": "/atb_media/images/atb-media_responsive.png",
-      "sizes": "380x827",
-      "type": "image/png"
+      "src": "/atb_media/images/d2.png",
+      "sizes": "1440x900",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/atb_media/images/d3.png",
+      "sizes": "1440x900",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/atb_media/images/1.jpg",
+      "sizes": "1080x2243",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/atb_media/images/2.jpg",
+      "sizes": "1080x2246",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/atb_media/images/3.jpg",
+      "sizes": "1080x2245",
+      "type": "image/jpg"
     }
   ]
 }
