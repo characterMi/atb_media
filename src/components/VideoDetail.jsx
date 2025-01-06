@@ -42,7 +42,23 @@ const VideoDetail = () => {
           display="flex"
           flexDirection="column"
         >
-          <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" controls />
+          <ReactPlayer
+            url={`https://www.youtube.com/watch?v=${id}`}
+            onPlay={() => {
+              navigator.setAppBadge?.(1);
+            }}
+            onStart={() => {
+              navigator.setAppBadge?.(1);
+            }}
+            onPause={() => {
+              navigator.clearAppBadge?.();
+            }}
+            onEnded={() => {
+              navigator.clearAppBadge?.();
+            }}
+            className="react-player"
+            controls
+          />
 
           <Box sx={{ position: "relative" }}>
             <Typography sx={{ fontSize: { xs: "18px", sm: "24px" } }} fontWeight="bold" p={2}>
