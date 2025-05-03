@@ -13,6 +13,7 @@ const assets = [
   "/atb_media/static/js/117.ae8ffe3c.chunk.js",
   "/atb_media/static/js/592.11a1d601.chunk.js",
   "/atb_media/static/media/logo.cd6b60c18b342209faa8.png",
+  "/atb_media/index.html",
   "/atb_media/static/css/main.d65564e9.css.map",
   "/atb_media/static/js/main.f3bcecc6.js.map",
   "/atb_media/static/css/430.07514bdf.chunk.css.map",
@@ -33,9 +34,13 @@ self.addEventListener("install", (event) => {
       cache.addAll(assets);
     })
   );
+  self.skipWaiting();
 });
 
 self.addEventListener("fetch", (event) => {
+  if (event.request.url.startsWith("https://i.ytimg.com"))
+    return fetch(event.request);
+
   event.respondWith(
     caches.match(event.request).then((response) => {
       // Even if the response is in the cache, we fetch it
