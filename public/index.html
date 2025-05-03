@@ -17,9 +17,6 @@
         if ("serviceWorker" in navigator) {
           navigator.serviceWorker
             .register("/atb_media/sw.js")
-            .then((res) => {
-              console.log("Serviceworker Started.");
-            })
             .catch((error) => console.error("an Error has been occurred!"));
         }
       });

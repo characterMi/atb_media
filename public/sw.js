@@ -9,9 +9,13 @@ self.addEventListener("install", (event) => {
       cache.addAll(assets);
     })
   );
+  self.skipWaiting();
 });
 
 self.addEventListener("fetch", (event) => {
+  if (event.request.url.startsWith("https://i.ytimg.com"))
+    return fetch(event.request);
+
   event.respondWith(
     caches.match(event.request).then((response) => {
       // Even if the response is in the cache, we fetch it
