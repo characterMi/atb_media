@@ -1,46 +1,48 @@
-import { Download } from "@mui/icons-material";
+import Download from "@mui/icons-material/Download";
 import { useEffect, useState } from "react";
 
 const DownloadAppButton = () => {
-    const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
 
-    const handleDownload = () => {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-        } else {
-            alert(
-                `To install the app look for "Add to Homescreen" or install in your browser's menu.`
-            );
-        }
+  const handleDownload = () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+    } else {
+      alert(
+        `To install the app look for "Add to Homescreen" or install in your browser's menu.`
+      );
+    }
+  };
+
+  useEffect(() => {
+    const handleBIP = (e) => {
+      e.preventDefault();
+
+      setDeferredPrompt(e);
     };
 
-    useEffect(() => {
-        const handleBIP = (e) => {
-            e.preventDefault();
+    window.addEventListener("beforeinstallprompt", handleBIP);
 
-            setDeferredPrompt(e);
-        };
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handleBIP);
+    };
+  }, []);
 
-        window.addEventListener("beforeinstallprompt", handleBIP);
-
-        return () => {
-            window.removeEventListener("beforeinstallprompt", handleBIP);
-        };
-    }, []);
-
-    return (
-        <button
-            className="category-btn"
-            onClick={handleDownload}
-            style={{
-                color: "#fff",
-                whiteSpace: "nowrap",
-            }}
-        >
-            <span style={{ color: "red" }}><Download /></span>
-            <span>Download app</span>
-        </button>
-    );
+  return (
+    <button
+      className="category-btn"
+      onClick={handleDownload}
+      style={{
+        color: "#fff",
+        whiteSpace: "nowrap",
+      }}
+    >
+      <span style={{ color: "red" }}>
+        <Download />
+      </span>
+      <span>Download app</span>
+    </button>
+  );
 };
 
 export default DownloadAppButton;

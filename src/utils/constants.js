@@ -38,4 +38,4 @@ export const demoVideoUrl = "/video/KkCXLABwHP0";
 export const demoChannelTitle = "No Channel name";
 export const demoVideoTitle = "There is no title to be shown...";
 export const demoProfilePicture =
-  "http://dergipark.org.tr/assets/app/images/buddy_sample.png";
+  "https://dergipark.org.tr/assets/app/images/buddy_sample.png";

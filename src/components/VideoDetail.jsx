@@ -1,43 +1,50 @@
-import { CheckCircle } from '@mui/icons-material';
-import { Box, Button, Stack, Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
-import ReactPlayer from 'react-player';
-import { Link, useParams } from 'react-router-dom';
-import { fetchFromAPI } from '../utils/fetchAPI';
+import CheckCircle from "@mui/icons-material/CheckCircle";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import { useEffect, useState } from "react";
+import ReactPlayer from "react-player";
+import { Link, useParams } from "react-router-dom";
+import { fetchFromAPI } from "../utils/fetchAPI";
 import CommentSection from "./CommentSection";
-import SkeletonVideo from './Skeleton/SkeletonVideo';
+import SkeletonVideo from "./Skeleton/SkeletonVideo";
 import Videos from "./Videos";
 
 const VideoDetail = () => {
-  const [comments, setComments] = useState([])
+  const [comments, setComments] = useState([]);
   const [videoDetail, setVideoDetail] = useState(null);
-  const [videos, setVideos] = useState(null)
-  const [commentSection, setCommentSection] = useState(false)
-  const { id } = useParams()
+  const [videos, setVideos] = useState(null);
+  const [commentSection, setCommentSection] = useState(false);
+  const { id } = useParams();
   useEffect(() => {
-    setVideoDetail(null)
-    setVideos([])
-    setComments([])
+    setVideoDetail(null);
+    setVideos([]);
+    setComments([]);
     fetchFromAPI(`videos?part=snippet,statistics&id=${id}`)
       .then((data) => setVideoDetail(data?.items?.[0]))
       .catch(() => setVideos(null));
-    fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`)
-      .then((data) => setVideos(data?.items));
+    fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`).then(
+      (data) => setVideos(data?.items)
+    );
     fetchFromAPI(`commentThreads?part=snippet&videoId=${id}`)
       .then((data) => setComments(data?.items))
       .catch(() => setComments(null));
   }, [id]);
   let content;
   if (!videoDetail?.snippet) {
-    content = <SkeletonVideo />
+    content = <SkeletonVideo />;
   } else {
-    const { snippet: { title, channelId, channelTitle }, statistics: { viewCount, likeCount } } = videoDetail
+    const {
+      snippet: { title, channelId, channelTitle },
+      statistics: { viewCount, likeCount },
+    } = videoDetail;
     content = (
       <Box flex={1} mb={1}>
         <Box
           sx={{
             width: "100%",
-            position: "relative"
+            position: "relative",
           }}
           display="flex"
           flexDirection="column"
@@ -61,28 +68,52 @@ const VideoDetail = () => {
           />
 
           <Box sx={{ position: "relative" }}>
-            <Typography sx={{ fontSize: { xs: "18px", sm: "24px" } }} fontWeight="bold" p={2}>
+            <Typography
+              sx={{ fontSize: { xs: "18px", sm: "24px" } }}
+              fontWeight="bold"
+              p={2}
+            >
               {title}
             </Typography>
             <Stack direction="row" gap="10px" alignItems="center" px={2}>
-              <Typography sx={{ fontSize: { xs: "12px", sm: "16px" }, opacity: 0.7 }}>
+              <Typography
+                sx={{ fontSize: { xs: "12px", sm: "16px" }, opacity: 0.7 }}
+              >
                 {parseInt(viewCount).toLocaleString()} Views
               </Typography>
-              <Typography sx={{ fontSize: { xs: "12px", sm: "16px" }, opacity: 0.7 }}>
+              <Typography
+                sx={{ fontSize: { xs: "12px", sm: "16px" }, opacity: 0.7 }}
+              >
                 {parseInt(likeCount).toLocaleString()} Likes
               </Typography>
             </Stack>
-            <Stack direction="row" justifyContent="space-between" alignItems="center" py={1} px={2} mb={3}>
-              <Link onClick={() => setCommentSection(false)} to={`/channel/${channelId}`}>
-                <Typography color="#fff" sx={{ fontSize: { xs: "12px", md: "14px", lg: "16px" } }}>
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              alignItems="center"
+              py={1}
+              px={2}
+              mb={3}
+            >
+              <Link
+                onClick={() => setCommentSection(false)}
+                to={`/channel/${channelId}`}
+              >
+                <Typography
+                  color="#fff"
+                  sx={{ fontSize: { xs: "12px", md: "14px", lg: "16px" } }}
+                >
                   {channelTitle}
-                  <CheckCircle sx={{ fontSize: "12px", color: "gray", ml: '5px' }} />
+                  <CheckCircle
+                    sx={{ fontSize: "12px", color: "gray", ml: "5px" }}
+                  />
                 </Typography>
               </Link>
-              <Link to={`https://www.youtube.com/channel/${channelId}`} target="_blank">
-                <Button color='error'>
-                  Subscribe
-                </Button>
+              <Link
+                to={`https://www.youtube.com/channel/${channelId}`}
+                target="_blank"
+              >
+                <Button color="error">Subscribe</Button>
               </Link>
             </Stack>
             {comments?.length > 0 && (
@@ -97,18 +128,41 @@ const VideoDetail = () => {
                     borderRadius: "15px",
                     background: "#1e1e1e",
                     cursor: "pointer",
-                    display: { xs: "flex", md: "none" }
+                    display: { xs: "flex", md: "none" },
                   }}
                   onClick={() => setCommentSection(true)}
                 >
-                  <Typography variant="h6" display="flex" justifyContent="flex-end" alignItems="center">
-                    Comments <span style={{ opacity: 0.7, marginLeft: "5px" }}>{comments.length}</span>
+                  <Typography
+                    variant="h6"
+                    display="flex"
+                    justifyContent="flex-end"
+                    alignItems="center"
+                  >
+                    Comments{" "}
+                    <span style={{ opacity: 0.7, marginLeft: "5px" }}>
+                      {comments.length}
+                    </span>
                   </Typography>
-                  <Box display="flex" justifyContent="start" alignItems="center" mt={1}>
+                  <Box
+                    display="flex"
+                    justifyContent="start"
+                    alignItems="center"
+                    mt={1}
+                  >
                     <img
-                      src={comments[0]?.snippet.topLevelComment.snippet.authorProfileImageUrl}
-                      alt={comments[0]?.snippet.topLevelComment.snippet.authorDisplayName}
-                      style={{ width: "28px", height: "28px", borderRadius: "50%" }}
+                      src={
+                        comments[0]?.snippet.topLevelComment.snippet
+                          .authorProfileImageUrl
+                      }
+                      alt={
+                        comments[0]?.snippet.topLevelComment.snippet
+                          .authorDisplayName
+                      }
+                      style={{
+                        width: "28px",
+                        height: "28px",
+                        borderRadius: "50%",
+                      }}
                       loading="lazy"
                     />
                     <Typography
@@ -116,39 +170,46 @@ const VideoDetail = () => {
                       ml={1}
                       className="line-clamp"
                       sx={{
-                        "& a": { color: "lightblue !important" }
+                        "& a": { color: "lightblue !important" },
                       }}
                       dangerouslySetInnerHTML={{
-                        __html: comments?.[0]?.snippet.topLevelComment.snippet.textDisplay
+                        __html:
+                          comments?.[0]?.snippet.topLevelComment.snippet
+                            .textDisplay,
                       }}
                     />
                   </Box>
                 </Box>
-                <CommentSection commentSection={commentSection} setCommentSection={setCommentSection} comments={comments} id={id} />
+                <CommentSection
+                  commentSection={commentSection}
+                  setCommentSection={setCommentSection}
+                  comments={comments}
+                  id={id}
+                />
               </>
             )}
           </Box>
         </Box>
       </Box>
-    )
+    );
   }
   return (
     <Box minHeight="95vh" color="#fff">
-      <Stack direction={{ xs: 'column', md: 'row' }} justifyContent="center">
+      <Stack direction={{ xs: "column", md: "row" }} justifyContent="center">
         {content}
         <Box
           sx={{
             opacity: {
               xs: commentSection ? 0 : 1,
-              md: 1
+              md: 1,
             },
             zIndex: {
               xs: commentSection ? 0 : 1,
-              md: 1
+              md: 1,
             },
             height: {
               xs: commentSection ? "100vh" : "auto",
-              md: "auto"
+              md: "auto",
             },
             overflow: "hidden",
             transition: "all 300ms ease-in-out",
@@ -163,7 +224,7 @@ const VideoDetail = () => {
         </Box>
       </Stack>
     </Box>
-  )
-}
+  );
+};
 
-export default VideoDetail
+export default VideoDetail;

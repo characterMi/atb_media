@@ -13,23 +13,23 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  if (event.request.url.startsWith("https://i.ytimg.com"))
-    return fetch(event.request);
-
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      // Even if the response is in the cache, we fetch it
-      // and update the cache for future usage
+    (async () => {
+      if (event.request.url.startsWith("https://i.ytimg.com")) {
+        event.respondWith(fetch(event.request));
+        return;
+      }
+
+      const cache = await caches.open("atb-media");
+
+      const cachedResponse = await cache.match(event.request);
+
       const fetchPromise = fetch(event.request)
         .then((networkResponse) => {
-          return caches.open("atb-media").then((cache) => {
-            cache.put(event.request, networkResponse.clone());
-            return networkResponse;
-          });
+          cache.put(event.request, networkResponse.clone());
+          return networkResponse;
         })
-        .catch((e) => {
-          console.error(e);
-
+        .catch(() => {
           return new Response(
             "Network error and no cached data available. see the browser's console for more information",
             {
@@ -38,8 +38,8 @@ self.addEventListener("fetch", (event) => {
             }
           );
         });
-      // We use the currently cached version if it's there
-      return response || fetchPromise; // cached or a network fetch
-    })
+
+      return cachedResponse || fetchPromise;
+    })()
   );
 });

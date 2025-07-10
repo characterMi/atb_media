@@ -1,8 +1,11 @@
-import { CheckCircle } from "@mui/icons-material"
-import { Box, CardContent, CardMedia, Typography } from "@mui/material"
-import { Link } from "react-router-dom"
-import { demoProfilePicture } from "../utils/constants"
-import SkeletonProfile from "./Skeleton/SkeletonProfile"
+import CheckCircle from "@mui/icons-material/CheckCircle";
+import Box from "@mui/material/Box";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
+import { demoProfilePicture } from "../utils/constants";
+import SkeletonProfile from "./Skeleton/SkeletonProfile";
 
 const ChannelCard = ({ channelDetail, marginTop }) => {
   let content;
@@ -15,43 +18,57 @@ const ChannelCard = ({ channelDetail, marginTop }) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          width: { xs: '100%', md: '300px' },
+          width: { xs: "100%", md: "300px" },
           height: "326px",
           margin: "auto",
-          marginTop
+          marginTop,
         }}
       >
         <Link to={`/channel/${channelDetail?.id?.channelId}`}>
-          <CardContent sx={{ display: "flex", flexDirection: "column", textAlign: "center", color: "#fff", alignItems: "center" }}>
+          <CardContent
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "center",
+              color: "#fff",
+              alignItems: "center",
+            }}
+          >
             <CardMedia
               loading="lazy"
-              image={channelDetail?.snippet?.thumbnails?.high?.url || demoProfilePicture}
+              image={
+                channelDetail?.snippet?.thumbnails?.high?.url ||
+                demoProfilePicture
+              }
               alt={channelDetail?.snippet?.title}
               sx={{
                 borderRadius: "50%",
                 height: "180px",
                 width: "180px",
                 mb: 2,
-                border: "1px solid #e3e3e3"
+                border: "1px solid #e3e3e3",
               }}
             />
             <Typography variant="h6">
               {channelDetail?.snippet?.title}
-              <CheckCircle sx={{ fontSize: 14, color: "gray", ml: '5px' }} />
+              <CheckCircle sx={{ fontSize: 14, color: "gray", ml: "5px" }} />
             </Typography>
             {channelDetail?.statistics?.subscriberCount && (
               <Typography>
-                {parseInt(channelDetail?.statistics?.subscriberCount).toLocaleString()} Subscribers
+                {parseInt(
+                  channelDetail?.statistics?.subscriberCount
+                ).toLocaleString()}{" "}
+                Subscribers
               </Typography>
             )}
           </CardContent>
         </Link>
       </Box>
-    )
+    );
   } else {
-    content = <SkeletonProfile />
+    content = <SkeletonProfile />;
   }
-  return content
-}
+  return content;
+};
 
-export default ChannelCard
+export default ChannelCard;
