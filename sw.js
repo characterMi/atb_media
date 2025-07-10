@@ -1,31 +1,30 @@
 const assets = [
   "/atb_media/",
-  "/atb_media/static/css/main.d65564e9.css",
-  "/atb_media/static/js/main.f3bcecc6.js",
-  "/atb_media/static/css/430.07514bdf.chunk.css",
-  "/atb_media/static/js/430.c0b0c4be.chunk.js",
-  "/atb_media/static/css/169.07514bdf.chunk.css",
-  "/atb_media/static/js/169.f07488bf.chunk.js",
-  "/atb_media/static/css/935.07514bdf.chunk.css",
-  "/atb_media/static/js/935.82fa0533.chunk.js",
-  "/atb_media/static/css/966.07514bdf.chunk.css",
-  "/atb_media/static/js/966.e77a1325.chunk.js",
-  "/atb_media/static/js/117.ae8ffe3c.chunk.js",
-  "/atb_media/static/js/592.11a1d601.chunk.js",
+  "/atb_media/static/css/main.bd6fcd1c.css",
+  "/atb_media/static/js/main.ccf60e25.js",
+  "/atb_media/static/css/459.388e9f2f.chunk.css",
+  "/atb_media/static/js/459.972871e0.chunk.js",
+  "/atb_media/static/css/169.388e9f2f.chunk.css",
+  "/atb_media/static/js/169.ab7199de.chunk.js",
+  "/atb_media/static/css/935.388e9f2f.chunk.css",
+  "/atb_media/static/js/935.ff4cfb41.chunk.js",
+  "/atb_media/static/css/966.388e9f2f.chunk.css",
+  "/atb_media/static/js/966.fb7310f0.chunk.js",
+  "/atb_media/static/js/172.2313d320.chunk.js",
+  "/atb_media/static/js/284.bb32a28c.chunk.js",
   "/atb_media/static/media/logo.cd6b60c18b342209faa8.png",
-  "/atb_media/index.html",
-  "/atb_media/static/css/main.d65564e9.css.map",
-  "/atb_media/static/js/main.f3bcecc6.js.map",
-  "/atb_media/static/css/430.07514bdf.chunk.css.map",
-  "/atb_media/static/js/430.c0b0c4be.chunk.js.map",
-  "/atb_media/static/css/169.07514bdf.chunk.css.map",
-  "/atb_media/static/js/169.f07488bf.chunk.js.map",
-  "/atb_media/static/css/935.07514bdf.chunk.css.map",
-  "/atb_media/static/js/935.82fa0533.chunk.js.map",
-  "/atb_media/static/css/966.07514bdf.chunk.css.map",
-  "/atb_media/static/js/966.e77a1325.chunk.js.map",
-  "/atb_media/static/js/117.ae8ffe3c.chunk.js.map",
-  "/atb_media/static/js/592.11a1d601.chunk.js.map",
+  "/atb_media/static/css/main.bd6fcd1c.css.map",
+  "/atb_media/static/js/main.ccf60e25.js.map",
+  "/atb_media/static/css/459.388e9f2f.chunk.css.map",
+  "/atb_media/static/js/459.972871e0.chunk.js.map",
+  "/atb_media/static/css/169.388e9f2f.chunk.css.map",
+  "/atb_media/static/js/169.ab7199de.chunk.js.map",
+  "/atb_media/static/css/935.388e9f2f.chunk.css.map",
+  "/atb_media/static/js/935.ff4cfb41.chunk.js.map",
+  "/atb_media/static/css/966.388e9f2f.chunk.css.map",
+  "/atb_media/static/js/966.fb7310f0.chunk.js.map",
+  "/atb_media/static/js/172.2313d320.chunk.js.map",
+  "/atb_media/static/js/284.bb32a28c.chunk.js.map",
 ];
 
 self.addEventListener("install", (event) => {
@@ -38,23 +37,23 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  if (event.request.url.startsWith("https://i.ytimg.com"))
-    return fetch(event.request);
-
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      // Even if the response is in the cache, we fetch it
-      // and update the cache for future usage
+    (async () => {
+      if (event.request.url.startsWith("https://i.ytimg.com")) {
+        event.respondWith(fetch(event.request));
+        return;
+      }
+
+      const cache = await caches.open("atb-media");
+
+      const cachedResponse = await cache.match(event.request);
+
       const fetchPromise = fetch(event.request)
         .then((networkResponse) => {
-          return caches.open("atb-media").then((cache) => {
-            cache.put(event.request, networkResponse.clone());
-            return networkResponse;
-          });
+          cache.put(event.request, networkResponse.clone());
+          return networkResponse;
         })
-        .catch((e) => {
-          console.error(e);
-
+        .catch(() => {
           return new Response(
             "Network error and no cached data available. see the browser's console for more information",
             {
@@ -63,8 +62,8 @@ self.addEventListener("fetch", (event) => {
             }
           );
         });
-      // We use the currently cached version if it's there
-      return response || fetchPromise; // cached or a network fetch
-    })
+
+      return cachedResponse || fetchPromise;
+    })()
   );
 });
