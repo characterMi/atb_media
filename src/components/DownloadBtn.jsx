@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 const DownloadAppButton = () => {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [isAppInstalled, setIsAppInstalled] = useState(false);
 
   const handleDownload = () => {
     if (deferredPrompt) {
@@ -15,6 +16,8 @@ const DownloadAppButton = () => {
   };
 
   useEffect(() => {
+    const onAppInstalled = () => setIsAppInstalled(true);
+
     const handleBIP = (e) => {
       e.preventDefault();
 
@@ -22,9 +25,11 @@ const DownloadAppButton = () => {
     };
 
     window.addEventListener("beforeinstallprompt", handleBIP);
+    window.addEventListener("appinstalled", onAppInstalled);
 
     return () => {
       window.removeEventListener("beforeinstallprompt", handleBIP);
+      window.removeEventListener("appinstalled", onAppInstalled);
     };
   }, []);
 

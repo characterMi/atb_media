@@ -17,6 +17,7 @@ const SearchBar = () => {
       setSearchTerm("");
     }
   };
+
   return (
     <Paper
       component="form"
