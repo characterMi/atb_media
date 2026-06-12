@@ -210,6 +210,9 @@ a {
     -webkit-user-drag: none;
     touch-callout: none;
     -webkit-touch-callout: none;
+  }
+
+  html {
     overscroll-behavior: none;
   }
 
